@@ -1,0 +1,18 @@
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://dubbo.apache.org/schema/dubbo"
+       xmlns="http://www.springframework.org/schema/beans" xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://dubbo.apache.org/schema/dubbo http://dubbo.apache.org/schema/dubbo/dubbo.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+    <context:property-placeholder location="classpath:application.properties" />
+   <!--dubbo应用配置-->
+    <dubbo:application name="demo-provider"/>
+    <dubbo:registry address="zookeeper://49.233.190.66:2181"/>
+    <dubbo:protocol name="dubbo" port="20899"/>
+
+    <!--testDemo-->
+    <bean id="testDemo" class="com.test.service.impl.TestDemoImpl"/>
+    <dubbo:service interface="com.test.service.TestDemo" ref="testDemo"/>
+
+    <bean id="goodService" class="com.test.service.impl.GoodServiceImpl"/>
+    <dubbo:service interface="com.test.service.GoodService" ref="goodService"/>
+</beans>
