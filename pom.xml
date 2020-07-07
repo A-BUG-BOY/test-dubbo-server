@@ -9,7 +9,6 @@
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
     <modules>
-        <module>test-dubbo-server-dao</module>
         <module>test-dubbo-server-service</module>
         <module>test-dubbo-server-impl</module>
         <module>test-dubbo-server-consumer</module>

@@ -3,11 +3,16 @@
        xmlns="http://www.springframework.org/schema/beans"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
        http://dubbo.apache.org/schema/dubbo http://dubbo.apache.org/schema/dubbo/dubbo.xsd">
-
+    <!--dubbo消费者-->
     <dubbo:application name="demo-consumer"/>
     <dubbo:registry address="zookeeper://49.233.190.66:2181"/>
     <dubbo:protocol name="dubbo" port="20899"/>
 
-    <dubbo:reference interface="com.test.service.TestDemo" id="testDemo" check="false"/>
-    <dubbo:reference interface="com.test.service.GoodService" id="goodService" check="false"/>
+    <!--启动时检查 check-->
+    <dubbo:reference interface="com.test.service.TestDemo" id="testDemo" check="false" generic="true"/>
+
+    <dubbo:reference interface="com.test.service.GoodService" id="goodService" />
+
+    <!--直连提供者 开发使用-->
+<!--    <dubbo:reference interface="com.test.service.GoodService" id="xxService" check="false" url="dubbo://localhost:20890"/>-->
 </beans>

@@ -7,6 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 /**
  * @program: test-dubbos-erver
  * @description:
@@ -27,9 +29,18 @@ public class TestController {
     public int testInsert(){
         TGoods tGoods = new TGoods();
         tGoods.setGoodsId(1);
-        tGoods.setGoodName("三星");
-        tGoods.setGoodPrice(100);
+        tGoods.setGoodsName("三星");
+        tGoods.setGoodsPrice(100);
         return testServiceCon.TestGoodsService(tGoods);
     }
 
+    @RequestMapping("/testGenerService")
+    public String testGenerService(){
+        return testServiceCon.testGenerService();
+    }
+
+    @RequestMapping("/select")
+    public List<TGoods> select(){
+      return  testServiceCon.select();
+    }
 }

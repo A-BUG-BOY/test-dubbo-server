@@ -16,6 +16,6 @@ import java.io.Serializable;
 public class TGoods implements Serializable {
     private int fId;
     private int goodsId;
-    private  String goodName;
-    private int goodPrice;
+    private  String goodsName;
+    private int goodsPrice;
 }

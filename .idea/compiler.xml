@@ -7,12 +7,14 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="test-dubbo-server-consumer" />
-        <module name="test-dubbo-server-dao" />
         <module name="test-dubbo-server-entity" />
         <module name="test-dubbo-server-service" />
         <module name="test-dubbo-server-impl" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="test-dubbo-server-dao" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">

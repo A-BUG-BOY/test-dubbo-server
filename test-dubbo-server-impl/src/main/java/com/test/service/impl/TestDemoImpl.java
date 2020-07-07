@@ -11,6 +11,7 @@ import com.test.service.TestDemo;
  **/
 @Service
 public class TestDemoImpl implements TestDemo {
+    @Override
     public String testDemo(String word) {
         return word;
     }

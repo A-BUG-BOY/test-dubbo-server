@@ -3,16 +3,22 @@
        xmlns="http://www.springframework.org/schema/beans" xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
        http://dubbo.apache.org/schema/dubbo http://dubbo.apache.org/schema/dubbo/dubbo.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
-    <context:property-placeholder location="classpath:application.properties" />
-   <!--dubbo应用配置-->
+   <!--dubbo提供者-->
     <dubbo:application name="demo-provider"/>
+    <!--注册中心配置-->
     <dubbo:registry address="zookeeper://49.233.190.66:2181"/>
+ <!--线程模型-->
     <dubbo:protocol name="dubbo" port="20899"/>
 
-    <!--testDemo-->
+ <!--testDemo-->
     <bean id="testDemo" class="com.test.service.impl.TestDemoImpl"/>
-    <dubbo:service interface="com.test.service.TestDemo" ref="testDemo"/>
+ <!--loadbalance 负载均衡策略-->
+ <!--集群容错模式-->
+    <dubbo:service interface="com.test.service.TestDemo" ref="testDemo" />
 
-    <bean id="goodService" class="com.test.service.impl.GoodServiceImpl"/>
+    <bean id="goodService" class="com.test.service.impl.GoodServiceImpl" />
     <dubbo:service interface="com.test.service.GoodService" ref="goodService"/>
+    <!--泛化测试-->
+    <bean id="genericService" class="com.test.service.impl.TestGenericService"/>
+    <dubbo:service interface="com.test.service.TestDemo" ref="genericService"/>
 </beans>
